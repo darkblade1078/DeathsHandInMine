@@ -1,0 +1,11 @@
+Model Information:
+* title:	Purple lilies
+* source:	https://sketchfab.com/3d-models/purple-lilies-a73ee85609bf48ef98eb08b29590e40f
+* author:	MyVisoin (https://sketchfab.com/TemurG)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Purple lilies" (https://sketchfab.com/3d-models/purple-lilies-a73ee85609bf48ef98eb08b29590e40f) by MyVisoin (https://sketchfab.com/TemurG) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
