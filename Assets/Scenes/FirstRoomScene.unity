@@ -7251,8 +7251,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.292714, y: 0.13764158, z: 0.0010500223}
-  m_Center: {x: -0.001694563, y: -0.08118035, z: -0.00052431534}
+  m_Size: {x: 0.292714, y: 0.13764156, z: 0.008410702}
+  m_Center: {x: -0.0016945633, y: -0.08118041, z: -0.0001697191}
 --- !u!65 &456252358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7272,7 +7272,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.292714, y: 0.13764158, z: 0.0010500223}
+  m_Size: {x: 0.292714, y: 0.13764158, z: 0.008410702}
   m_Center: {x: 0.0016945633, y: 0.08118035, z: -0.00052431534}
 --- !u!65 &456252359
 BoxCollider:
@@ -7293,7 +7293,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.07207996, y: 0.29999998, z: 0.0010500223}
+  m_Size: {x: 0.07207996, y: 0.29999998, z: 0.008410702}
   m_Center: {x: -0.04295424, y: 0.0000004770136, z: -0.0005243268}
 --- !u!65 &456252360
 BoxCollider:
@@ -7314,7 +7314,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.07207996, y: 0.29999998, z: 0.0010500223}
+  m_Size: {x: 0.07207996, y: 0.29999998, z: 0.008410702}
   m_Center: {x: 0.042954236, y: 0.0000004770136, z: -0.0005243268}
 --- !u!1 &491656440
 GameObject:
@@ -8436,6 +8436,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098368112}
     m_Modifications:
+    - target: {fileID: 18990966906905371, guid: cde888e146d5eff409a36e73b24bc4d4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.196
+      objectReference: {fileID: 0}
+    - target: {fileID: 18990966906905371, guid: cde888e146d5eff409a36e73b24bc4d4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.745
+      objectReference: {fileID: 0}
+    - target: {fileID: 18990966906905371, guid: cde888e146d5eff409a36e73b24bc4d4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 1245696345812092153, guid: cde888e146d5eff409a36e73b24bc4d4, type: 3}
       propertyPath: m_Name
       value: Vinyls_3
