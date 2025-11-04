@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class VRFullScreenVideo : MonoBehaviour
 {
@@ -11,7 +12,15 @@ public class VRFullScreenVideo : MonoBehaviour
     public float quadWidth = 30f;
     public float quadHeight = 20f;
     public bool stretchToFit = true;
+    public bool followCamera = false; // Changed to false by default
     public Material customMaterial; // Assign a material in Inspector
+    
+    [Header("Environment")]
+    public bool makeEnvironmentBlack = false;
+    public Color backgroundColor = Color.black;
+    
+    [Header("Scene Transition")]
+    public bool autoTransition = true; // Automatically go to next scene when video ends
     
     private VideoPlayer videoPlayer;
     private RenderTexture renderTexture;
@@ -20,9 +29,42 @@ public class VRFullScreenVideo : MonoBehaviour
     
     void Start()
     {
+        if (makeEnvironmentBlack)
+        {
+            SetupBlackEnvironment();
+        }
+        
         CreateVideoQuad();
         SetupVideoPlayer();
+        
+        // Position the quad once at start
+        PositionQuad();
+        
         PlayVideo();
+    }
+    
+    void SetupBlackEnvironment()
+    {
+        // Set camera background to solid black
+        Camera mainCam = Camera.main;
+        if (mainCam != null)
+        {
+            mainCam.clearFlags = CameraClearFlags.SolidColor;
+            mainCam.backgroundColor = backgroundColor;
+            Debug.Log("Environment set to black");
+        }
+        
+        // Find all OVRCameraRig cameras and set them too
+        OVRCameraRig[] rigs = FindObjectsOfType<OVRCameraRig>();
+        foreach (OVRCameraRig rig in rigs)
+        {
+            Camera[] cameras = rig.GetComponentsInChildren<Camera>();
+            foreach (Camera cam in cameras)
+            {
+                cam.clearFlags = CameraClearFlags.SolidColor;
+                cam.backgroundColor = backgroundColor;
+            }
+        }
     }
     
     void CreateVideoQuad()
@@ -80,7 +122,7 @@ public class VRFullScreenVideo : MonoBehaviour
         videoPlayer.clip = videoClip;
         videoPlayer.renderMode = VideoRenderMode.RenderTexture;
         videoPlayer.targetTexture = renderTexture;
-        videoPlayer.isLooping = true;
+        videoPlayer.isLooping = false; // Changed to false so video ends and triggers transition
         videoPlayer.playOnAwake = false;
         videoPlayer.audioOutputMode = VideoAudioOutputMode.Direct;
         videoPlayer.waitForFirstFrame = true;
@@ -91,20 +133,29 @@ public class VRFullScreenVideo : MonoBehaviour
         // Events
         videoPlayer.prepareCompleted += OnVideoPrepared;
         videoPlayer.errorReceived += OnVideoError;
+        videoPlayer.loopPointReached += OnVideoFinished; // Added event for when video ends
         
         videoPlayer.Prepare();
         
         Debug.Log("VideoPlayer setup complete");
     }
     
-    void Update()
+    void PositionQuad()
     {
-        // Keep the quad in front of the camera
         if (videoQuad != null && Camera.main != null)
         {
             Transform cam = Camera.main.transform;
             videoQuad.transform.position = cam.position + cam.forward * quadDistance;
             videoQuad.transform.rotation = Quaternion.LookRotation(videoQuad.transform.position - cam.position);
+        }
+    }
+    
+    void Update()
+    {
+        // Only follow camera if enabled
+        if (followCamera && videoQuad != null && Camera.main != null)
+        {
+            PositionQuad();
         }
     }
     
@@ -116,6 +167,32 @@ public class VRFullScreenVideo : MonoBehaviour
     void OnVideoError(VideoPlayer vp, string message)
     {
         Debug.LogError("Video error: " + message);
+    }
+    
+    void OnVideoFinished(VideoPlayer vp)
+    {
+        Debug.Log("Video finished playing");
+        
+        if (autoTransition)
+        {
+            LoadNextScene();
+        }
+    }
+    
+    public void LoadNextScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextIndex = currentSceneIndex + 1;
+        
+        if (nextIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            Debug.Log("Loading next scene index: " + nextIndex);
+            SceneManager.LoadScene(nextIndex);
+        }
+        else
+        {
+            Debug.LogWarning("No next scene to load! This is the last scene in build order.");
+        }
     }
     
     public void PlayVideo()
