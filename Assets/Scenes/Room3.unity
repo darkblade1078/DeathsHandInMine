@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 54fe2f000ad8f424fb63cc3ea0ae2bb2, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b4f152e0498484391a9f0d5a1facf03b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1093,6 +1093,18 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1131,6 +1143,10 @@ PrefabInstance:
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_BackGroundColor.a
@@ -1384,7 +1400,7 @@ Transform:
   m_GameObject: {fileID: 299639867}
   serializedVersion: 2
   m_LocalRotation: {x: 0.33079913, y: -0.0329763, z: 0.3034621, w: 0.8929699}
-  m_LocalPosition: {x: -3.21, y: 3.89, z: -4.14}
+  m_LocalPosition: {x: -1.557, y: 4.605, z: -6.118}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2672,6 +2688,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8453802942769846538, guid: ef09c8029cfbe074a84f2c18a754ba06, type: 3}
       insertIndex: -1
       addedObject: {fileID: 744289289}
+    - targetCorrespondingSourceObject: {fileID: 8453802942769846538, guid: ef09c8029cfbe074a84f2c18a754ba06, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 744289290}
   m_SourcePrefab: {fileID: 100100000, guid: ef09c8029cfbe074a84f2c18a754ba06, type: 3}
 --- !u!4 &744289287 stripped
 Transform:
@@ -2704,6 +2723,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.054820642, y: 0.021554258, z: 0.036649555}
   m_Center: {x: 0.020173945, y: 0.008071948, z: 0.0015971977}
+--- !u!114 &744289290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744289288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd74ecb902a0ca4b81cd860bd64f272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ovrCameraRig: {fileID: 281026631}
+  triggerCollider: {fileID: 744289289}
+  bedTimer: {fileID: 1034673936}
+  useSceneTransition: 1
+  playerTag: Player
+  eyeCloseDelay: 0.5
+  eyeCloseDuration: 2
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!54 &781037307
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4196,7 +4235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f722c53929ea747853bcb95edc48fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerDuration: 240
+  timerDuration: 90
   targetBoxCollider: {fileID: 744289289}
   audioSource: {fileID: 1683878204}
   timerFinishedSound: {fileID: 8300000, guid: e77c57ae160b0c244a04f52dc2fbe0f4, type: 3}
@@ -4540,7 +4579,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 235931055}

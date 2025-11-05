@@ -188,7 +188,8 @@ public class BlackoutAudioTransition : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No next scene to load! This is the last scene in build order.");
+            Debug.Log("No next scene available - going to scene 1 (first scene)");
+            SceneManager.LoadScene(1);
         }
     }
     
